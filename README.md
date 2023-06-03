@@ -31,6 +31,8 @@ zappa deploy
 zappa init
 ```
 ```zappa_settings.json```を編集する
+
+
 以下のように
 ```
 {
