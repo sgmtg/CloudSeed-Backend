@@ -22,6 +22,11 @@ pip install -r requirements.txt
 aws configure
 ```
 
+## flaskのテスト
+```shell
+flask --debug run
+```
+
 ## Zappaのインストールとデプロイ
 初期化
 ```shell
