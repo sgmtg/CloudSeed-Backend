@@ -23,9 +23,6 @@ aws configure
 ```
 
 ## Zappaのインストールとデプロイ
-```shell
-zappa deploy
-```
 初期化
 ```shell
 zappa init
