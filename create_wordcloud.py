@@ -13,7 +13,7 @@ def create_wordcloud(kw_list):
     # wordcloud用の背景色
     WORDCLOUD_BG_COLOR = "white"
     # wordcloud出力先
-    WORDCLOUD_OUTPUT_FILE = "./images/wordcloud.png"
+    WORDCLOUD_OUTPUT_FILE = "/tmp/wordcloud.png"
 
     # ---------- 処理開始 ----------
 
