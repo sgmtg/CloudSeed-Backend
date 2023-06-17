@@ -4,8 +4,8 @@ from pyntone import ApiTokenAuth, KintoneRestAPIClient
 
 app = Flask(__name__)
 # Kintoneの設定
-DOMAIN = "https://bv9iwgn82tj7.cybozu.com"
-KEYWORD_API_TOKEN = "sZZ3h8ZzIEiKYwT6wAaO59ZyLdSF9nq4COLI2Rfm"
+DOMAIN = ""
+KEYWORD_API_TOKEN = ""
 KEYWORD_APP_ID = 4
 @app.route('/add_keyword', methods=['GET'])
 def add_keyword():
