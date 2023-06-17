@@ -20,13 +20,13 @@ def get_words():
     kw_list = data.get("kw_list")
 
     # ワードクラウドの生成
-    image = create_wordcloud.create_wordcloud(kw_list=kw_list)
-
+    # image = create_wordcloud.create_wordcloud(kw_list=kw_list)
+    create_wordcloud.create_wordcloud(kw_list=kw_list)
     # 画像をバイナリデータに変換してレスポンスとして返す
-    img_io = BytesIO()
-    image.save(img_io, "JPEG", quality=95)
-    img_io.seek(0)
-    return send_file(img_io, mimetype="image/jpeg")
+    # img_io = BytesIO()
+    # image.save(img_io, "JPEG", quality=95)
+    # img_io.seek(0)
+    return send_file("/tmp/images/wordcloud.png", mimetype="image/jpeg")
 
 
 if __name__ == "__main__":
