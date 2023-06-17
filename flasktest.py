@@ -16,6 +16,7 @@ def get_words(words):
 
 
     #結果からワードクラウドを作成
+    
     # create_wordcloud(words)
 
     
