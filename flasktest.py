@@ -16,11 +16,10 @@ def get_words(words):
 
 
     #結果からワードクラウドを作成
-    
     # create_wordcloud(words)
 
     
-    return jsonify({'image': 'gazou', 'text': words}), 200
+    return jsonify({'image': 'gazoufile', 'text': words}), 200
 
 if __name__ == '__main__':
     app.run()
