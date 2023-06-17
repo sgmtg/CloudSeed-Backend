@@ -3,3 +3,6 @@ Flask
 requests
 zappa
 awscli
+wordcloud
+pytrends
+PIL
