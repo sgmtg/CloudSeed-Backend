@@ -7,10 +7,19 @@ def lambda_handler(event=None, context=None):
     
     return 'hello!'
 
-@app.route('/<name>', methods=['GET', 'POST'])
-def hello_name(name):
+@app.route('/<words>', methods=['GET', 'POST'])
+def get_words(words):
+    #postされたワードで検索して、結果を返す
+    # search_words(words)
+
+
+
+
+    #結果からワードクラウドを作成
+    # create_wordcloud(words)
+
     
-    return jsonify({'message': 'Account successfully created', 'user': name}), 200
+    return jsonify({'image': 'gazou', 'text': words}), 200
 
 if __name__ == '__main__':
     app.run()
