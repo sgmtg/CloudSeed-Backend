@@ -1,7 +1,21 @@
 from flask import Flask, jsonify, request
 import create_wordcloud
+from dotenv import load_dotenv
+import os
+from pyntone import ApiTokenAuth, KintoneRestAPIClient
+import json
+import requests
 
+load_dotenv()
 app = Flask(__name__)
+
+DOMAIN = os.getenv("DOMAIN")
+KEYWORD_API_TOKEN = os.getenv("KEYWORD_API_TOKEN")
+KEYWORD_APP_ID = os.getenv("KEYWORD_APP_ID")
+FIGDATA_APP_TOKEN = os.getenv("FIGDATA_APP_TOKEN")
+FIGDATA_APP_ID = os.getenv("FIGDATA_APP_ID")
+USERDATA_APP_TOKEN = os.getenv("USERDATA_APP_TOKEN")
+USERDATA_APP_ID = os.getenv("USERDATA_APP_ID")
 
 
 # ルートパスへのリクエストを処理する関数
