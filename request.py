@@ -1,6 +1,6 @@
 import requests
 
-base_url = "http://127.0.0.1:5000"
+base_url = "https://cymntn2bea.execute-api.ap-northeast-3.amazonaws.com/dev"
 
 # ルートパスへのGETリクエスト
 response = requests.get(base_url)
