@@ -26,7 +26,7 @@ def get_words():
     # img_io = BytesIO()
     # image.save(img_io, "JPEG", quality=95)
     # img_io.seek(0)
-    return send_file("/tmp/images/wordcloud.png", mimetype="image/jpeg")
+    return send_file("/tmp/wordcloud.png", mimetype="image/jpeg")
 
 
 if __name__ == "__main__":
