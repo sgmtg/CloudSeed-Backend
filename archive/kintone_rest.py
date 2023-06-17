@@ -54,9 +54,9 @@ def post_kintone_record(DOMAIN, KEYWORD_APP_ID, KEYWORD_API_TOKEN):
 
 if __name__ == "__main__":
     # テスト用のkintoneのドメイン、アプリID、APIトークン
-    DOMAIN = "bv9iwgn82tj7"
-    KEYWORD_API_TOKEN = "sZZ3h8ZzIEiKYwT6wAaO59ZyLdSF9nq4COLI2Rfm"
-    KEYWORD_APP_ID = 4
+    DOMAIN = ""
+    KEYWORD_API_TOKEN = ""
+    KEYWORD_APP_ID = ""
 
     # kintoneからデータを取得
     res = get_kintone_records(DOMAIN, KEYWORD_APP_ID, KEYWORD_API_TOKEN)
