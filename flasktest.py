@@ -1,5 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response, send_file
 import create_wordcloud
+from io import BytesIO
+import os
 
 app = Flask(__name__)
 
@@ -16,11 +18,15 @@ def get_words():
     # POSTリクエストからデータを取得
     data = request.get_json()
     kw_list = data.get("kw_list")
+
     # ワードクラウドの生成
     image = create_wordcloud.create_wordcloud(kw_list=kw_list)
-    print(type(image))
-    # レスポンスをJSON形式で返す
-    return jsonify({"message": "Word cloud created!"}), 200
+
+    # 画像をバイナリデータに変換してレスポンスとして返す
+    img_io = BytesIO()
+    image.save(img_io, "JPEG", quality=95)
+    img_io.seek(0)
+    return send_file(img_io, mimetype="image/jpeg")
 
 
 if __name__ == "__main__":
