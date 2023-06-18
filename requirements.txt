@@ -3,3 +3,8 @@ Flask
 requests
 zappa
 awscli
+wordcloud
+pytrends
+flask-cors
+Pillow
+python-dotenv
