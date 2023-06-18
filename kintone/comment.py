@@ -45,7 +45,7 @@ def post_comment(records):
 
     body = {
         "app": comment_app_id,
-        "record": records
+        "records": records
         
     }
     body_json = json.dumps(body)
