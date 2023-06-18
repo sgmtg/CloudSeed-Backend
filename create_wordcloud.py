@@ -23,9 +23,9 @@ def download_file(url, dst_path):
 def create_wordcloud(kw_list):
     WORDCLOUD_FONT_PATH = "./templates/SourceHanSansJP-Regular.otf"
     # wordcloud用の幅
-    WORDCLOUD_WIDTH = 2000
+    WORDCLOUD_WIDTH = 1200
     # wordcloud用の高さ
-    WORDCLOUD_HEIGHT = 2000
+    WORDCLOUD_HEIGHT = 1200
     # wordcloud用の背景色
     WORDCLOUD_BG_COLOR = "white"
     # mask画像のパス
