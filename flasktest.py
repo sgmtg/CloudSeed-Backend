@@ -1,15 +1,15 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response, send_file
 import create_wordcloud
+from flask_cors import CORS
+import os
 import kintone.keyword as kk
 import kintone.figdata as kf
 from dotenv import load_dotenv
-import os
-from dotenv import load_dotenv
-
 
 
 load_dotenv()
 app = Flask(__name__)
+CORS(app)
 
 DOMAIN = os.getenv("DOMAIN")
 KEYWORD_API_TOKEN = os.getenv("KEYWORD_API_TOKEN")
@@ -21,21 +21,28 @@ USERDATA_APP_ID = os.getenv("USERDATA_APP_ID")
 
 
 # ルートパスへのリクエストを処理する関数
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST", "OPTIONS"])
 def lambda_handler(event=None, context=None):
     return "hello!"
 
 
 # /word-cloud パスへのリクエストを処理する関数
-@app.route("/word-cloud", methods=["POST"])
-def post_wordcloud():
+# @cross_origin(origins=["http://localhost:5173"], methods=["POST", "OPTIONS"])
+@app.route("/word-cloud", methods=["GET", "POST", "OPTIONS"])
+def get_words():
     # POSTリクエストからデータを取得
-    data = request.get_json()
-    kw_list = data.get("kw_list")
+    # data = request.get_json()
+    # kw_list = data.get("kw_list")
+    kw_list = ["key", "key2"]
+
     # ワードクラウドの生成
-    image = create_wordcloud.create_wordcloud(kw_list=kw_list)
-    # レスポンスをJSON形式で返す
-    return jsonify({"message": "Word cloud created!"}), 200
+    # image = create_wordcloud.create_wordcloud(kw_list=kw_list)
+    create_wordcloud.create_wordcloud(kw_list=kw_list)
+    # 画像をバイナリデータに変換してレスポンスとして返す
+    # img_io = BytesIO()
+    # image.save(img_io, "JPEG", quality=95)
+    # img_io.seek(0)
+    return send_file("/tmp/wordcloud.png", mimetype="image/png")
 
 
 @app.route("/kintone/keyword/<id>", methods=["GET"])
@@ -67,4 +74,4 @@ def post_figdata():
 
 if __name__ == "__main__":
     # アプリケーションを実行する
-    app.run()
+    app.run(debug=True)

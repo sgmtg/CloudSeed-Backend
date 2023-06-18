@@ -5,6 +5,6 @@ zappa
 awscli
 wordcloud
 pytrends
+flask-cors
 Pillow
-pyntone
 python-dotenv
