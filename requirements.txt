@@ -6,3 +6,4 @@ awscli
 wordcloud
 pytrends
 PIL
+flask-cors
