@@ -1,19 +1,43 @@
+import os
+import pprint
+import time
+import urllib.error
+import urllib.request
+import numpy as np
 from collections import Counter
 from wordcloud import WordCloud
 from pytrends.request import TrendReq
 from PIL import Image
 
 
+def download_file(url, dst_path):
+    try:
+        with urllib.request.urlopen(url) as web_file:
+            data = web_file.read()
+            with open(dst_path, mode="wb") as local_file:
+                local_file.write(data)
+    except urllib.error.URLError as e:
+        print(e)
+
+
 def create_wordcloud(kw_list):
     WORDCLOUD_FONT_PATH = "./templates/SourceHanSansJP-Regular.otf"
     # wordcloud用の幅
-    WORDCLOUD_WIDTH = 600
+    WORDCLOUD_WIDTH = 1200
     # wordcloud用の高さ
-    WORDCLOUD_HEIGHT = 600
+    WORDCLOUD_HEIGHT = 1200
     # wordcloud用の背景色
     WORDCLOUD_BG_COLOR = "white"
+    # mask画像のパス
+    WORDCLOUD_MASK = "./templates/mask.jpg"
+    # フォントサイズの最小値
+    WORDCLOUD_MIN_FONT_SIZE = 20
+    # フォントサイズの最小値
+    WORDCLOUD_MAX_FONT_SIZE = 50
+    # カラーマップ
+    WORDCLOUD_COLOR_MAP = "winter"
     # wordcloud出力先
-    WORDCLOUD_OUTPUT_FILE = "/tmp/wordcloud.png"
+    WORDCLOUD_OUTPUT_FILE = "./tmp/wordcloud.png"
 
     # ---------- 処理開始 ----------
 
@@ -52,9 +76,15 @@ def create_wordcloud(kw_list):
     # 関連キーワードの出現回数をカウントする
     word_counter = Counter(all_trends_list)
 
+    WORDCLOUD_MASK_SHAPE = np.array(Image.open(WORDCLOUD_MASK))
+
     # WordCloudを生成する
     wordcloud = WordCloud(
-        width=WORDCLOUD_WIDTH, height=WORDCLOUD_HEIGHT, font_path=WORDCLOUD_FONT_PATH
+        background_color=WORDCLOUD_BG_COLOR,
+        font_path=WORDCLOUD_FONT_PATH,
+        width=WORDCLOUD_WIDTH,
+        height=WORDCLOUD_HEIGHT,
+        colormap=WORDCLOUD_COLOR_MAP,
     ).generate_from_frequencies(word_counter)
 
     # WordCloudを画像ファイルとして保存する
