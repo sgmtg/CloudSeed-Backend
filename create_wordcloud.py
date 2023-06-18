@@ -5,7 +5,8 @@ from PIL import Image
 
 
 def create_wordcloud(kw_list):
-    # WORDCLOUD_FONT_PATH = "./templates/SourceHanSansJP-Regular.otf"
+    WORDCLOUD_FONT_PATH = "./templates/SourceHanSansJP-Regular.otf"
+    # WORDCLOUD_FONT_PATH = "./templates/Arial Unicode.ttf"
     # wordcloud用の幅
     WORDCLOUD_WIDTH = 600
     # wordcloud用の高さ
@@ -54,7 +55,7 @@ def create_wordcloud(kw_list):
 
     # WordCloudを生成する
     wordcloud = WordCloud(
-        width=WORDCLOUD_WIDTH, height=WORDCLOUD_HEIGHT
+        width=WORDCLOUD_WIDTH, height=WORDCLOUD_HEIGHT, font_path=WORDCLOUD_FONT_PATH
     ).generate_from_frequencies(word_counter)
 
     # WordCloudを画像ファイルとして保存する
