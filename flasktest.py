@@ -4,6 +4,7 @@ from flask_cors import CORS
 import os
 import kintone.keyword as kk
 import kintone.figdata as kf
+import kintone.comment as cm
 from dotenv import load_dotenv
 
 
@@ -71,6 +72,23 @@ def post_figdata():
 
     response = kf.post_figdata(records)
     return jsonify({"message": "Created", "response": response.text}), 201
+
+@app.route("/kintone/comment", methods=["GET"])
+def get_comment():
+    response = cm.get_comment()
+    return jsonify({"message": "Created", "response": response}), 201
+
+
+@app.route("/kintone/comment", methods=["POST"])
+def post_comment():
+    data = request.get_json()
+    records = data.get("records")
+
+    response = cm.post_comment(records)
+    return jsonify({"message": "Created", "response": response.text}), 201
+
+
+
 
 if __name__ == "__main__":
     # アプリケーションを実行する
